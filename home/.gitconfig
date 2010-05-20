@@ -10,12 +10,8 @@
   whitespace = nowarn
 
 [user]
-  name = Justin Blake
-  email = justin@megablaix.com
-
-[github]
-  user = blaix
-  token = *secret*
+  name = Rob Sharp
+  email = rob@sharp.id.au
 
 [branch]
 	autosetuprebase = always
