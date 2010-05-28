@@ -1,4 +1,12 @@
-export PATH="~/bin:~/.gem/ruby/1.8/bin:/usr/local/bin:$PATH"
+# .bash_profile
+
+# Get the aliases and functions
+if [ -f ~/.bashrc ]; then
+	. ~/.bashrc
+fi
+
+# User specific environment and startup programs
+export PATH="~/bin:~/.gem/ruby/1.8/bin:/usr/local/bin:/bin$PATH"
 export EDITOR=vim
 
 # Set up git tab completion and show branch name in command prompt
