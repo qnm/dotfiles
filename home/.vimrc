@@ -124,4 +124,4 @@ endif
 " Custom filetypes
 filetype on
 au BufNewFile,BufRead *.ru set filetype=ruby
-
+au BufRead,BufNewFile *.haml set filetype=haml 
