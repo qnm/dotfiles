@@ -91,8 +91,8 @@ if has("gui_running")
   set guioptions-=T " hide toolbar
 
 "  " Default to Full screen
-  set fuoptions=maxvert,maxhorz
-  au GUIEnter * set fullscreen
+  "set fuoptions=maxvert,maxhorz
+  "au GUIEnter * set fullscreen
 
   " no scrollbars no matter what
   set guioptions-=r
@@ -125,3 +125,4 @@ endif
 filetype on
 au BufNewFile,BufRead *.ru set filetype=ruby
 au BufRead,BufNewFile *.haml set filetype=haml 
+filetype plugin indent on
