@@ -14,7 +14,6 @@ set number        " turn on line numbers
 set cursorline    " highlight current line
 set ruler         " show current line/column number in status line
 syntax on
-colorscheme vividchalk
 set statusline=%F%m%r\ %y\ [%l/%L\ %v]
 
 " allow backspacing over everything in insert mode
@@ -126,3 +125,12 @@ filetype on
 au BufNewFile,BufRead *.ru set filetype=ruby
 au BufRead,BufNewFile *.haml set filetype=haml 
 filetype plugin indent on
+
+" load pathogen
+call pathogen#helptags()
+call pathogen#runtime_append_all_bundles()
+
+" load solarizes
+set background=dark
+colorscheme solarized
+
