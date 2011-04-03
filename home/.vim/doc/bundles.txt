@@ -1,0 +1,29 @@
+*bundles* *bundles.txt*            Installed Bundles
+
+
+Last updated by vim-update-bundles on Sun Apr 03 15:18:56 +1000 2011.
+
+  PLUGIN                           VERSION                RELEASE DATE
+------------------------------------------------------------------------
+  |ack.vim|                        n/a                    2010-09-22
+  |ruby-debugger|                  v0.1-28-g60b6f92       2011-02-05
+  |snipmate.vim|                   n/a                    2010-04-08
+  |nerdtree|                       4.1.0-28-g1dd345c      2011-03-03
+  |textile.vim|                    0.2-10-g8740757        2011-02-21
+  |cucumber|                       n/a                    2010-11-21
+  |fugitive|                       v1.1-58-g762bfa7       2011-03-08
+  |git|                            v5.0-6-gca001e5        2011-02-07
+  |haml|                           vim7.2-54-ga0345d5     2010-11-08
+  |markdown|                       n/a                    2010-10-24
+  |rails|                          v4.3-9-g5db62b2        2011-02-26
+  |repeat|                         v1.0                   2008-04-25
+  |surround|                       v1.90-5-gd9e6bfd       2011-01-23
+  |vividchalk|                     v2.0                   2010-02-19
+  |align|                          n/a                    2010-04-01
+  |shoulda|                        n/a                    2010-04-01
+  |supertab|                       n/a                    2010-04-01
+  |tcomment|                       n/a                    2010-04-01
+  |ruby|                           vim7.3-31-g699670a     2011-03-21
+  |colors-solarized|               n/a                    2011-03-26
+  |vimoutliner|                    v0.3.5                 2011-03-20
+
