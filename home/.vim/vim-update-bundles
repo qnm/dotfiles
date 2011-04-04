@@ -325,7 +325,7 @@ end
 
 configuration = {
   :verbose       => nil,     # git commands are quiet by default, set verbose=true to hear everything
-  :submodule     => false,   # if submodule is set then use git submodules instead of cloning
+  :submodule     => true,   # if submodule is set then use git submodules instead of cloning
 
   :dotfiles_path => nil,     # full path to the dotfiles directory
   :vimdir_path   => nil,     # full path to ~/.vim   (creates symlink if not in $HOME)

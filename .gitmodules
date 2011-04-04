@@ -1,0 +1,63 @@
+[submodule "home/.vim/bundle/ack.vim"]
+	path = home/.vim/bundle/ack.vim
+	url = git://github.com/mileszs/ack.vim.git
+[submodule "home/.vim/bundle/ruby-debugger"]
+	path = home/.vim/bundle/ruby-debugger
+	url = git://github.com/astashov/vim-ruby-debugger.git
+[submodule "home/.vim/bundle/snipmate.vim"]
+	path = home/.vim/bundle/snipmate.vim
+	url = git://github.com/msanders/snipmate.vim.git
+[submodule "home/.vim/bundle/nerdtree"]
+	path = home/.vim/bundle/nerdtree
+	url = git://github.com/scrooloose/nerdtree.git
+[submodule "home/.vim/bundle/textile.vim"]
+	path = home/.vim/bundle/textile.vim
+	url = git://github.com/timcharper/textile.vim.git
+[submodule "home/.vim/bundle/cucumber"]
+	path = home/.vim/bundle/cucumber
+	url = git://github.com/tpope/vim-cucumber.git
+[submodule "home/.vim/bundle/fugitive"]
+	path = home/.vim/bundle/fugitive
+	url = git://github.com/tpope/vim-fugitive.git
+[submodule "home/.vim/bundle/git"]
+	path = home/.vim/bundle/git
+	url = git://github.com/tpope/vim-git.git
+[submodule "home/.vim/bundle/haml"]
+	path = home/.vim/bundle/haml
+	url = git://github.com/tpope/vim-haml.git
+[submodule "home/.vim/bundle/markdown"]
+	path = home/.vim/bundle/markdown
+	url = git://github.com/tpope/vim-markdown.git
+[submodule "home/.vim/bundle/rails"]
+	path = home/.vim/bundle/rails
+	url = git://github.com/tpope/vim-rails.git
+[submodule "home/.vim/bundle/repeat"]
+	path = home/.vim/bundle/repeat
+	url = git://github.com/tpope/vim-repeat.git
+[submodule "home/.vim/bundle/surround"]
+	path = home/.vim/bundle/surround
+	url = git://github.com/tpope/vim-surround.git
+[submodule "home/.vim/bundle/vividchalk"]
+	path = home/.vim/bundle/vividchalk
+	url = git://github.com/tpope/vim-vividchalk.git
+[submodule "home/.vim/bundle/align"]
+	path = home/.vim/bundle/align
+	url = git://github.com/tsaleh/vim-align.git
+[submodule "home/.vim/bundle/shoulda"]
+	path = home/.vim/bundle/shoulda
+	url = git://github.com/tsaleh/vim-shoulda.git
+[submodule "home/.vim/bundle/supertab"]
+	path = home/.vim/bundle/supertab
+	url = git://github.com/tsaleh/vim-supertab.git
+[submodule "home/.vim/bundle/tcomment"]
+	path = home/.vim/bundle/tcomment
+	url = git://github.com/tsaleh/vim-tcomment.git
+[submodule "home/.vim/bundle/ruby"]
+	path = home/.vim/bundle/ruby
+	url = git://github.com/vim-ruby/vim-ruby.git
+[submodule "home/.vim/bundle/colors-solarized"]
+	path = home/.vim/bundle/colors-solarized
+	url = git://github.com/altercation/vim-colors-solarized.git
+[submodule "home/.vim/bundle/vimoutliner"]
+	path = home/.vim/bundle/vimoutliner
+	url = git://github.com/vimoutliner/vimoutliner.git
