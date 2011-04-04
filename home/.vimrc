@@ -1,27 +1,27 @@
 let mapleader=","
 
 "git urls for pathogen bundles
-" BUNDLE: git://github.com/mileszs/ack.vim.git
-" BUNDLE: git://github.com/astashov/vim-ruby-debugger.git
-" BUNDLE: git://github.com/msanders/snipmate.vim.git
-" BUNDLE: git://github.com/scrooloose/nerdtree.git
-" BUNDLE: git://github.com/timcharper/textile.vim.git
-" BUNDLE: git://github.com/tpope/vim-cucumber.git
-" BUNDLE: git://github.com/tpope/vim-fugitive.git
-" BUNDLE: git://github.com/tpope/vim-git.git
-" BUNDLE: git://github.com/tpope/vim-haml.git
-" BUNDLE: git://github.com/tpope/vim-markdown.git
-" BUNDLE: git://github.com/tpope/vim-rails.git
-" BUNDLE: git://github.com/tpope/vim-repeat.git
-" BUNDLE: git://github.com/tpope/vim-surround.git
-" BUNDLE: git://github.com/tpope/vim-vividchalk.git
-" BUNDLE: git://github.com/tsaleh/vim-align.git
-" BUNDLE: git://github.com/tsaleh/vim-shoulda.git
-" BUNDLE: git://github.com/tsaleh/vim-supertab.git
-" BUNDLE: git://github.com/tsaleh/vim-tcomment.git
-" BUNDLE: git://github.com/vim-ruby/vim-ruby.git
-" BUNDLE: git://github.com/altercation/vim-colors-solarized.git
-" BUNDLE: git://github.com/vimoutliner/vimoutliner.git
+" BUNDLE: git@github.com:mileszs/ack.vim.git
+" BUNDLE: git@github.com:astashov/vim-ruby-debugger.git
+" BUNDLE: git@github.com:msanders/snipmate.vim.git
+" BUNDLE: git@github.com:scrooloose/nerdtree.git
+" BUNDLE: git@github.com:timcharper/textile.vim.git
+" BUNDLE: git@github.com:tpope/vim-cucumber.git
+" BUNDLE: git@github.com:tpope/vim-fugitive.git
+" BUNDLE: git@github.com:tpope/vim-git.git
+" BUNDLE: git@github.com:tpope/vim-haml.git
+" BUNDLE: git@github.com:tpope/vim-markdown.git
+" BUNDLE: git@github.com:tpope/vim-rails.git
+" BUNDLE: git@github.com:tpope/vim-repeat.git
+" BUNDLE: git@github.com:tpope/vim-surround.git
+" BUNDLE: git@github.com:tpope/vim-vividchalk.git
+" BUNDLE: git@github.com:tsaleh/vim-align.git
+" BUNDLE: git@github.com:tsaleh/vim-shoulda.git
+" BUNDLE: git@github.com:tsaleh/vim-supertab.git
+" BUNDLE: git@github.com:tsaleh/vim-tcomment.git
+" BUNDLE: git@github.com:vim-ruby/vim-ruby.git
+" BUNDLE: git@github.com:altercation/vim-colors-solarized.git
+" BUNDLE: git@github.com:vimoutliner/vimoutliner.git
 
 " Indent with 2 spaces. Auto-indent.
 set tabstop=2
