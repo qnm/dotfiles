@@ -5,7 +5,6 @@ let mapleader=","
 " BUNDLE: https://github.com/astashov/vim-ruby-debugger.git
 " BUNDLE: https://github.com/msanders/snipmate.vim.git
 " BUNDLE: https://github.com/scrooloose/nerdtree.git
-" BUNDLE: https://github.com/timcharper/textile.vim.git
 " BUNDLE: https://github.com/tpope/vim-cucumber.git
 " BUNDLE: https://github.com/tpope/vim-fugitive.git
 " BUNDLE: https://github.com/tpope/vim-git.git
@@ -22,6 +21,8 @@ let mapleader=","
 " BUNDLE: https://github.com/vim-ruby/vim-ruby.git
 " BUNDLE: https://github.com/altercation/vim-colors-solarized.git
 " BUNDLE: https://github.com/vimoutliner/vimoutliner.git
+" BUNDLE: https://github.com/nanotech/jellybeans.vim.git 
+" BUNDLE: https://github.com/wincent/Command-T.git 
 
 " Indent with 2 spaces. Auto-indent.
 set tabstop=2
@@ -158,3 +159,27 @@ filetype plugin indent on
 set background=dark
 colorscheme solarized
 
+com! -complete=file -nargs=* Edit silent! exec "!vim --servername " . v:servername . " --remote-tab-silent <args>"
+
+if has("gui_running")
+  " GUI is running or is about to start.
+  " Maximize gvim window.
+  set lines=999 columns=999
+else
+  " This is console Vim.
+  if exists("+lines")
+    set lines=50
+  endif
+  if exists("+columns")
+    set columns=100
+  endif
+endif
+
+" move tabs to the end for new, single buffers (exclude splits)
+autocmd BufNew * if winnr('$') == 1 | tabmove99 | endif
+
+" map CTRL-[hjkl] to move around split windows
+map <C-h> <C-w>h
+map <C-l> <C-w>l
+map <C-J> <C-W>j
+map <C-K> <C-W>k

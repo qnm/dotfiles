@@ -61,3 +61,9 @@
 [submodule "home/.vim/bundle/vimoutliner"]
 	path = home/.vim/bundle/vimoutliner
 	url = https://github.com/vimoutliner/vimoutliner.git
+[submodule "home/.vim/bundle/jellybeans.vim"]
+	path = home/.vim/bundle/jellybeans.vim
+	url = https://github.com/nanotech/jellybeans.vim.git
+[submodule "home/.vim/bundle/Command-T"]
+	path = home/.vim/bundle/Command-T
+	url = https://github.com/wincent/Command-T.git
