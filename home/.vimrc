@@ -21,6 +21,12 @@ Bundle 'nanotech/jellybeans.vim'
 Bundle 'kien/ctrlp.vim'
 Bundle 'vim-scripts/VimClojure'
 Bundle 'jpalardy/vim-slime'
+Bundle 'mirell/vim-matchit'
+Bundle 'leshill/vim-json'
+Bundle 'hallison/vim-markdown'
+Bundle 'itspriddle/vim-jquery'
+Bundle 'nelstrom/vim-textobj-rubyblock'
+Bundle 'ecomba/vim-ruby-refactoring'
 
 filetype plugin indent on     " required!
 "
@@ -34,6 +40,9 @@ filetype plugin indent on     " required!
 " NOTE: comments after Bundle command are not allowed..
 
 let mapleader=","
+
+"matchit
+runtime macros/matchit.vim
 
 " Indent with 2 spaces. Auto-indent.
 set tabstop=2
@@ -56,7 +65,10 @@ set backspace=indent,eol,start
 
 " language plugins
 syntax on
-filetype plugin indent on
+set nocompatible
+if has("autocmd")
+  filetype plugin indent on
+endif
 
 " Remap the tab key to do autocompletion or indentation depending on the
 " context (from http://bitbucket.org/garybernhardt/dotfiles/src/tip/.vimrc)
