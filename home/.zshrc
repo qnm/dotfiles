@@ -15,6 +15,7 @@ alias tmux="TERM=screen-256color tmux"
 #settings for terminal
 export LANG=en_US.UTF-8
 export TERM=rxvt-unicode
+alias rake="bundle exec rake"
 
 # Set to this to use case-sensitive completion
 # CASE_SENSITIVE="true"

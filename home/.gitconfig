@@ -1,17 +1,23 @@
-[color]
-  ui = auto
-
 [alias]
+  lol = log --graph --decorate --pretty=oneline --abbrev-commit
+  lola = log --graph --decorate --pretty=oneline --abbrev-commit --all
   co = checkout
   st = status
   ci = commit -v
+
+[color]
+  branch = auto
+  diff = auto
+  interactive = auto
+  status = auto
+  ui = auto
 
 [apply]
   whitespace = nowarn
 
 [user]
-  name = Rob Sharp
-  email = rob@sharp.id.au
+	name = Rob Sharp
+	email = rob@sharp.id.au
 
 [branch]
 	autosetuprebase = always
@@ -26,3 +32,6 @@
     end\n\
     File.open(%(%A), %(w)) {|f| f.write(b)}\n\
     exit 1 if b.include?(%(<)*%L)'"
+
+[core]
+	editor = vim

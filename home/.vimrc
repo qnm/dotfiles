@@ -119,22 +119,7 @@ if has("gui_running")
   set guioptions-=R
   set guioptions-=l
   set guioptions-=L
-else
-  " This is console Vim.
-  if exists("+lines")
-    set lines=50
-  endif
-  if exists("+columns")
-    set columns=100
-  endif
 endif
-
-
-
-" load pathogen
-filetype off
-call pathogen#helptags()
-call pathogen#runtime_append_all_bundles()
 
 " Custom filetypes
 filetype on
