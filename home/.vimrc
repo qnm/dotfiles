@@ -1,28 +1,39 @@
-let mapleader=","
+filetype off                   " required!
 
-"git urls for pathogen bundles
-" BUNDLE: https://github.com/mileszs/ack.vim.git
-" BUNDLE: https://github.com/astashov/vim-ruby-debugger.git
-" BUNDLE: https://github.com/msanders/snipmate.vim.git
-" BUNDLE: https://github.com/scrooloose/nerdtree.git
-" BUNDLE: https://github.com/tpope/vim-cucumber.git
-" BUNDLE: https://github.com/tpope/vim-fugitive.git
-" BUNDLE: https://github.com/tpope/vim-git.git
-" BUNDLE: https://github.com/tpope/vim-haml.git
-" BUNDLE: https://github.com/tpope/vim-markdown.git
-" BUNDLE: https://github.com/tpope/vim-rails.git
-" BUNDLE: https://github.com/tpope/vim-repeat.git
-" BUNDLE: https://github.com/tpope/vim-surround.git
-" BUNDLE: https://github.com/tpope/vim-vividchalk.git
-" BUNDLE: https://github.com/tsaleh/vim-align.git
-" BUNDLE: https://github.com/tsaleh/vim-shoulda.git
-" BUNDLE: https://github.com/tsaleh/vim-supertab.git
-" BUNDLE: https://github.com/tsaleh/vim-tcomment.git
-" BUNDLE: https://github.com/vim-ruby/vim-ruby.git
-" BUNDLE: https://github.com/altercation/vim-colors-solarized.git
-" BUNDLE: https://github.com/vimoutliner/vimoutliner.git
-" BUNDLE: https://github.com/nanotech/jellybeans.vim.git 
-" BUNDLE: https://github.com/wincent/Command-T.git 
+set rtp+=~/.vim/bundle/vundle/
+call vundle#rc()
+
+" let Vundle manage Vundle
+" required! 
+Bundle 'gmarik/vundle'
+
+" My Bundles here:
+"
+" original repos on github
+Bundle 'tpope/vim-git'
+Bundle 'tpope/vim-haml'
+Bundle 'tpope/vim-markdown'
+Bundle 'tpope/vim-rails'
+Bundle 'tpope/vim-fugitive'
+Bundle 'tomtom/tcomment_vim'
+Bundle 'vim-ruby/vim-ruby'
+Bundle 'nanotech/jellybeans.vim'
+Bundle 'kien/ctrlp.vim'
+Bundle 'vim-scripts/VimClojure'
+Bundle 'jpalardy/vim-slime'
+
+filetype plugin indent on     " required!
+"
+" Brief help
+" :BundleList          - list configured bundles
+" :BundleInstall(!)    - install(update) bundles
+" :BundleSearch(!) foo - search(or refresh cache first) for foo
+" :BundleClean(!)      - confirm(or auto-approve) removal of unused bundles
+"
+" see :h vundle for more details or wiki for FAQ
+" NOTE: comments after Bundle command are not allowed..
+
+let mapleader=","
 
 " Indent with 2 spaces. Auto-indent.
 set tabstop=2
@@ -37,11 +48,15 @@ set t_Co=256
 set number        " turn on line numbers
 set cursorline    " highlight current line
 set ruler         " show current line/column number in status line
-syntax on
 set statusline=%F%m%r\ %y\ [%l/%L\ %v]
 
 " allow backspacing over everything in insert mode
 set backspace=indent,eol,start
+
+
+" language plugins
+syntax on
+filetype plugin indent on
 
 " Remap the tab key to do autocompletion or indentation depending on the
 " context (from http://bitbucket.org/garybernhardt/dotfiles/src/tip/.vimrc)
@@ -56,17 +71,19 @@ endfunction
 inoremap <tab> <c-r>=InsertTabWrapper()<cr>
 inoremap <s-tab> <c-n>
 
-" other settings, mostly stolen from bill
+" hide the menu
+set guioptions-=m  "remove menu bar
+set guioptions-=T  "remove toolbar
+set guioptions-=r  "remove right-hand scroll bar
+
+" other settings
 set scrolloff=3   " keep 3 lines when scrolling
 set vb t_vb=      " turn off error beep/flash
 set nobackup      " do not keep a backup file
 set noswapfile    " do not make a swap file
 set nowritebackup " I mean it do not make a bacukp file ever
-set nowrap        " stop lines from wrapping
-set wildignore=*.o,*.obj,*.bak,*.exe,*.pyc,*.ds_store,*.db
-set ttyfast         " smoother changes
-set wildmenu
-set ls=2            " allways show status line
+set ttyfast        " smoother changes
+set ls=2           " allways show status line
 
 " Make searches case-sensitive only if they contain upper-case characters
 set ignorecase
@@ -80,91 +97,28 @@ vmap < <gv
 map ,p "+gp
 map ,y "+y
 
-" Toggle NERDTree
-map ,d :execute 'NERDTreeToggle ' . getcwd()<cr>
-
 " Updating .vimrc
 map ,ve :vs ~/.vimrc<cr>
 map ,vu :source ~/.vimrc<cr>:exe ":echo 'vimrc reloaded'"<cr>
 
 " Viewport controls
-map ,h <C-w>h
-map ,j <C-w>j
-map ,k <C-w>k
-map ,l <C-w>l
+map <C-h> <C-w>h
+map <C-l> <C-w>l
+map <C-J> <C-W>j
+map <C-K> <C-W>k
 
 " Run current file
 map ,rr :w<cr>:!ruby %<cr>
 map ,rp :w<cr>:!python %<cr>
 
-" Turn off search highlights
-map <C-n> :noh<cr>
-
-" FuzzyFinder
-" Recursive hack from http://intraspirit.net/scratchpad/a-simple-fuzzyfinder-improvement/
-map ,t :FufFileRecursive<cr>
-
-" ShowFunc plugin
-map ,f <Plug>ShowFunc
-
-" TextMate's cmd-enter feature
-imap <D-CR> <esc>o
-
 if has("gui_running")
   set guioptions-=T " hide toolbar
-
-"  " Default to Full screen
-  "set fuoptions=maxvert,maxhorz
-  "au GUIEnter * set fullscreen
 
   " no scrollbars no matter what
   set guioptions-=r
   set guioptions-=R
   set guioptions-=l
   set guioptions-=L
-endif
-
-" Abbreviations for ERB
-:iab erif  <% if %><Left><Left><Left>
-:iab erend <% end %><c-d>
-:iab <%=   <%= %><Left><Left><Left>
-
-" Abbreviations for cucumber
-:iab fea 
-\Feature: 
-\<CR>  In order
-\<CR>As a 
-\<CR>I want <Up><Up><Right><Right>
-
-" Abbreviations for ruby
-:iab def 
-\def
-\<CR>end<Up>
-
-" Other abbreviations
-:iab end end<c-d>
-
-" load pathogen
-filetype off
-call pathogen#helptags()
-call pathogen#runtime_append_all_bundles()
-
-" Custom filetypes
-filetype on
-au BufNewFile,BufRead *.ru set filetype=ruby
-au BufRead,BufNewFile *.haml set filetype=haml 
-filetype plugin indent on
-
-" load solarizes
-set background=dark
-colorscheme solarized
-
-com! -complete=file -nargs=* Edit silent! exec "!vim --servername " . v:servername . " --remote-tab-silent <args>"
-
-if has("gui_running")
-  " GUI is running or is about to start.
-  " Maximize gvim window.
-  set lines=999 columns=999
 else
   " This is console Vim.
   if exists("+lines")
@@ -175,11 +129,18 @@ else
   endif
 endif
 
-" move tabs to the end for new, single buffers (exclude splits)
-autocmd BufNew * if winnr('$') == 1 | tabmove99 | endif
 
-" map CTRL-[hjkl] to move around split windows
-map <C-h> <C-w>h
-map <C-l> <C-w>l
-map <C-J> <C-W>j
-map <C-K> <C-W>k
+
+" load pathogen
+filetype off
+call pathogen#helptags()
+call pathogen#runtime_append_all_bundles()
+
+" Custom filetypes
+filetype on
+au BufNewFile,BufRead *.ru set filetype=ruby
+au BufRead,BufNewFile *.haml set filetype=haml 
+
+" load theme
+set background=dark
+colorscheme jellybeans

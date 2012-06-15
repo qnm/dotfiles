@@ -1,29 +1,21 @@
 *bundles* *bundles.txt*            Installed Bundles
 
 
-Last updated by vim-update-bundles on Wed Jun 15 08:24:42 +1000 2011.
+Lists the currently installed bundles. Also see the |bundle-log|.
+Last updated by vim-update-bundles on Fri Jun 15 10:42:33 EST 2012.
 
   PLUGIN                           VERSION                RELEASE DATE
 ------------------------------------------------------------------------
-  |ack.vim|                        n/a                    2010-09-22
-  |ruby-debugger|                  v0.1-31-g3900a62       2011-05-01
-  |snipmate.vim|                   n/a                    2010-04-08
-  |nerdtree|                       4.1.0-35-g1cd5048      2011-05-06
-  |textile.vim|                    0.2-10-g8740757        2011-02-21
-  |cucumber|                       n/a                    2011-02-25
-  |fugitive|                       v1.2-12-g4453370       2011-06-13
-  |git|                            v5.0-6-gca001e5        2011-02-07
-  |haml|                           vim7.2-57-gde3e72a     2011-05-11
-  |markdown|                       n/a                    2010-10-24
-  |rails|                          v4.3-17-g01dcc0f       2011-06-14
-  |repeat|                         v1.0                   2008-04-25
-  |surround|                       v1.90-5-gd9e6bfd       2011-01-23
-  |vividchalk|                     v2.0                   2010-02-19
-  |align|                          n/a                    2010-04-01
-  |shoulda|                        n/a                    2010-04-01
-  |supertab|                       n/a                    2010-04-01
-  |tcomment|                       n/a                    2010-04-01
-  |ruby|                           vim7.3-32-g07d0b51     2011-04-10
-  |colors-solarized|               n/a                    2011-05-09
-  |vimoutliner|                    v0.3.6                 2011-05-08
+  |vim-pathogen|                   v2.0-19-g09f2c3b       2012-05-01
+  |vim-git|                        v6.0-1-g3d31cb0        2012-05-17
+  |vim-haml|                       vim7.2-62-g6284c18     2012-05-10
+  |vim-markdown|                   3a99157473cb6          2012-04-01
+  |vim-rails|                      v4.4-57-gf22e648       2012-06-11
+  |tcomment_vim|                   2.06-12-gec0ae34       2012-06-01
+  |vim-ruby|                       vim7.3-120-g34a0862    2012-06-14
+  |jellybeans.vim|                 v1.5-11-g9baa7ce       2012-05-25
+  |ctrlp.vim|                      1.7.7-7-g96bd4b3       2012-05-29
+  |vim-fugitive|                   v1.2-141-g49c6be3      2012-06-07
+  |VimClojure|                     v2.3.3                 2012-06-11
+  |vim-slime|                      3ecc0a6d7d3f0          2012-06-09
 

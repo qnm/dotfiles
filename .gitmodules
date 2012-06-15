@@ -1,18 +1,9 @@
 [submodule "home/.vim/bundle/ack.vim"]
 	path = home/.vim/bundle/ack.vim
 	url = https://github.com/mileszs/ack.vim.git
-[submodule "home/.vim/bundle/ruby-debugger"]
-	path = home/.vim/bundle/ruby-debugger
-	url = https://github.com/astashov/vim-ruby-debugger.git
 [submodule "home/.vim/bundle/snipmate.vim"]
 	path = home/.vim/bundle/snipmate.vim
 	url = https://github.com/msanders/snipmate.vim.git
-[submodule "home/.vim/bundle/nerdtree"]
-	path = home/.vim/bundle/nerdtree
-	url = https://github.com/scrooloose/nerdtree.git
-[submodule "home/.vim/bundle/textile.vim"]
-	path = home/.vim/bundle/textile.vim
-	url = https://github.com/timcharper/textile.vim.git
 [submodule "home/.vim/bundle/cucumber"]
 	path = home/.vim/bundle/cucumber
 	url = https://github.com/tpope/vim-cucumber.git
@@ -49,9 +40,6 @@
 [submodule "home/.vim/bundle/supertab"]
 	path = home/.vim/bundle/supertab
 	url = https://github.com/tsaleh/vim-supertab.git
-[submodule "home/.vim/bundle/tcomment"]
-	path = home/.vim/bundle/tcomment
-	url = https://github.com/tsaleh/vim-tcomment.git
 [submodule "home/.vim/bundle/ruby"]
 	path = home/.vim/bundle/ruby
 	url = https://github.com/vim-ruby/vim-ruby.git
@@ -64,6 +52,18 @@
 [submodule "home/.vim/bundle/jellybeans.vim"]
 	path = home/.vim/bundle/jellybeans.vim
 	url = https://github.com/nanotech/jellybeans.vim.git
-[submodule "home/.vim/bundle/Command-T"]
-	path = home/.vim/bundle/Command-T
-	url = https://github.com/wincent/Command-T.git
+[submodule "home/.vim/bundle/tcomment_vim"]
+	path = home/.vim/bundle/tcomment_vim
+	url = https://github.com/tomtom/tcomment_vim.git
+[submodule "home/.vim/bundle/grep.vim"]
+	path = home/.vim/bundle/grep.vim
+	url = https://github.com/vim-scripts/grep.vim
+[submodule "home/.vim/bundle/ctrlp.vim"]
+	path = home/.vim/bundle/ctrlp.vim
+	url = https://github.com/kien/ctrlp.vim
+[submodule "home/.vim/bundle/ruby-debugger"]
+	path = home/.vim/bundle/ruby-debugger
+	url = https://github.com/astashov/vim-ruby-debugger.git
+[submodule "home/.vim/bundle/nerdtree"]
+	path = home/.vim/bundle/nerdtree
+	url = https://github.com/scrooloose/nerdtree.git
