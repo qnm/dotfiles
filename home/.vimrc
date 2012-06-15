@@ -25,7 +25,7 @@ Bundle 'mirell/vim-matchit'
 Bundle 'leshill/vim-json'
 Bundle 'hallison/vim-markdown'
 Bundle 'itspriddle/vim-jquery'
-Bundle 'nelstrom/vim-textobj-rubyblock'
+"Bundle 'nelstrom/vim-textobj-rubyblock'
 Bundle 'ecomba/vim-ruby-refactoring'
 
 filetype plugin indent on     " required!
