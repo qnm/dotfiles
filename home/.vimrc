@@ -27,6 +27,10 @@ Bundle 'hallison/vim-markdown'
 Bundle 'itspriddle/vim-jquery'
 "Bundle 'nelstrom/vim-textobj-rubyblock'
 Bundle 'ecomba/vim-ruby-refactoring'
+Bundle 'jceb/vim-orgmode'
+Bundle 'spolu/dwm.vim'
+Bundle 'Lokaltog/vim-powerline'
+Bundle 'tomasr/molokai'
 
 filetype plugin indent on     " required!
 "
@@ -83,8 +87,8 @@ endfunction
 inoremap <tab> <c-r>=InsertTabWrapper()<cr>
 inoremap <s-tab> <c-n>
 
-" hide the menu
-set guioptions-=m  "remove menu bar
+" show the menu, hide toolbar and scroll bar
+set guioptions+=m  "show menu bar
 set guioptions-=T  "remove toolbar
 set guioptions-=r  "remove right-hand scroll bar
 
@@ -140,4 +144,11 @@ au BufRead,BufNewFile *.haml set filetype=haml
 
 " load theme
 set background=dark
-colorscheme jellybeans
+colorscheme molokai
+
+" agenda for org mode
+let g:org_agenda_files=['~/Dropbox/Ratecity/wip/current_rs.org']
+
+" ctrl-p
+let g:ctrlp_map = '<c-p>'
+let g:ctrlp_cmd = 'CtrlP'
