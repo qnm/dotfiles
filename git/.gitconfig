@@ -1,0 +1,27 @@
+[user]
+  name = Rob Sharp
+  email = qnm@fea.st
+  signingkey = 00DC3E37
+[color]
+  diff = auto
+  status = auto
+  branch = auto
+[color "status"]
+  changed = yellow
+  added = green
+  untracked = red
+[core]
+  autocrlf = input
+  whitespace=fix,-indent-with-non-tab,trailing-space,cr-at-eol
+  excludesfile = /Users/qnm/.gitignore_global
+[push]
+  default = current
+[mergetool "fugitive"]
+  cmd = vim -f -c \"Gdiff\" \"$MERGED\"
+[merge]
+  tool = fugitive
+[rerere]
+  enabled = true
+  autoupdate = true
+[pull]
+  rebase = true

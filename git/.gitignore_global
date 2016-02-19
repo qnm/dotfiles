@@ -1,0 +1,12 @@
+*~
+.DS_Store
+*.swp
+*.swo
+
+## Environment normalisation:
+/.bundle/
+/vendor/bundle
+/lib/bundler/man/
+
+# unless supporting rvm < 1.11.0 or doing something fancy, ignore this:
+.rvmrc
