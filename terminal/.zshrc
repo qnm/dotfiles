@@ -51,6 +51,10 @@ export PATH="./node/bin:./node_modules/.bin:$PATH"
 export PASSWORD_STORE_DIR="$HOME/.password-store"
 export PASSWORD_STORE_GIT="$HOME/.password-store/.git"
 
+# dyld
+export DYLD_LIBRARY_PATH="/Library/Developer/CommandLineTools/usr/lib/swift/macosx/"
+launchctl setenv DYLD_LIBRARY_PATH $DYLD_LIBRARY_PATH
+
 # gnupg
 export GNUPGHOME="$HOME/.gnupg"
 
