@@ -1,9 +1,6 @@
 sudo apt install $(grep -vE "^\s*#" packages  | tr "\n" " ")
 
 export GPGKEY=cdacea52a952f689fda3f401031315d9816c1160
-
-curl -Lfo ~/.gnupg/gpg-agent.conf https://raw.githubusercontent.com/drduh/config/master/gpg-agent.conf
-curl -Lfo ~/.gnupg/gpg.conf https://raw.githubusercontent.com/drduh/config/master/gpg.conf
 curl https://keybase.io/qnm/pgp_keys.asc?fingerprint=$GPGKEY | gpg --import
 
 echo "$( \
