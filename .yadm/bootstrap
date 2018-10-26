@@ -1,0 +1,58 @@
+sudo apt install $(grep -vE "^\s*#" packages  | tr "\n" " ")
+
+export GPGKEY=cdacea52a952f689fda3f401031315d9816c1160
+
+curl -Lfo ~/.gnupg/gpg-agent.conf https://raw.githubusercontent.com/drduh/config/master/gpg-agent.conf
+curl -Lfo ~/.gnupg/gpg.conf https://raw.githubusercontent.com/drduh/config/master/gpg.conf
+curl https://keybase.io/qnm/pgp_keys.asc?fingerprint=$GPGKEY | gpg --import
+
+echo "$( \
+  gpg --list-keys --fingerprint $GPGKEY\
+  | grep pub -A 1 | tail -1 \
+  | tr -d '[:space:]' | awk 'BEGIN { FS = "=" } ; { print $2 }' \
+  ):6:" | gpg --import-ownertrust;
+
+# ssh via gpg
+cat << EOF >> ~/.ssh/config
+Host github.com
+    IdentitiesOnly yes
+    IdentityFile ~/.ssh/id_rsa_yubikey.pub
+EOF
+
+cat << EOF >> ~/.bashrc
+export GPG_TTY="$(tty)"
+export SSH_AUTH_SOCK=$(gpgconf --list-dirs agent-ssh-socket)
+gpgconf --launch gpg-agent
+EOF
+
+ssh-add -L > ~/.ssh/id_rsa_yubikey.pub
+chmod 644 ~/.ssh/id_rsa_yubikey.pub
+
+# convox
+curl -L https://convox.com/cli/linux/convox -o /tmp/convox
+sudo mv /tmp/convox /usr/local/bin/convox
+sudo chmod 755 /usr/local/bin/convox
+
+# docker
+sudo gpasswd -a $USER docker
+newgrp docker
+
+# git usability
+git config --global push.default current
+
+cat << EOF >> ~/.bashrc
+export GOPATH=$HOME/go
+EOF
+
+flatpak remote-add --if-not-exists flathub https://flathub.org/repo/flathub.flatpakrepo
+
+git clone https://github.com/asdf-vm/asdf.git ~/.asdf --branch v0.6.0
+echo -e '\n. $HOME/.asdf/asdf.sh' >> ~/.bashrc
+echo -e '\n. $HOME/.asdf/completions/asdf.bash' >> ~/.bashrc
+
+source ~/.bashrc
+
+asdf plugin-add golang
+asdf install golang 1.11
+go get golang.org/x/tools/cmd/goimports
+go get github.com/sqs/goreturns
