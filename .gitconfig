@@ -1,0 +1,6 @@
+[user]
+	email = rob@sharp.id.au
+	name = Robin Duncan Sharp
+	signingkey = cdacea52a952f689fda3f401031315d9816c1160
+[push]
+	default = current
