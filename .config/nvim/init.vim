@@ -4,7 +4,6 @@ set modeline
 call plug#begin('~/.config/nvim/plugged')
 
 " My Plugins here:
-Plug 'altercation/vim-colors-solarized'
 Plug 'tpope/vim-git'
 Plug 'tpope/vim-haml'
 Plug 'tpope/vim-markdown'
@@ -48,11 +47,7 @@ vmap > >gv
 vmap < <gv
 
 " solarized
-let g:solarized_termcolors=16
 set background=dark
-let g:solarized_visibility = "high"
-let g:solarized_contrast = "high"
-colorscheme solarized
 
 " ctrl-p
 let g:ctrlp_map = '<c-p>'
