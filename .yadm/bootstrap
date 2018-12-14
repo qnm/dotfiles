@@ -1,45 +1,62 @@
-sudo apt install $(grep -vE "^\s*#" packages  | tr "\n" " ")
+system_type=$(uname -s)
 
-export GPGKEY=cdacea52a952f689fda3f401031315d9816c1160
-curl https://keybase.io/qnm/pgp_keys.asc?fingerprint=$GPGKEY | gpg --import
+if [ "$system_type" = "Darwin" ]; then
+  # install homebrew if it's missing
+  if ! command -v brew >/dev/null 2>&1; then
+    echo "Installing homebrew"
+    /usr/bin/ruby -e "$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/master/install)"
+  fi
 
-git config --global user.name "`gpg --list-keys | grep uid | awk -F'[]|<]' '{print $2}' | xargs`"
-git config --global user.email "`gpg --list-keys | grep uid | awk -F'[<|>]' '{print $2}' | xargs`"
-git config --global user.signingkey "$GPGKEY"
+  if [ -f "$HOME/.Brewfile" ]; then
+    echo "Updating homebrew bundle"
+    brew bundle --global
+  fi
+
+  gpg-connect-agent killagent /bye
+  gpg-connect-agent /bye
+else
+  sudo apt install $(grep -vE "^\s*#" packages  | tr "\n" " ")
+
+  # convox
+  curl -L https://convox.com/cli/linux/convox -o /tmp/convox
+  sudo mv /tmp/convox /usr/local/bin/convox
+  sudo chmod 755 /usr/local/bin/convox
+
+  # docker
+  sudo gpasswd -a $USER docker
+  newgrp docker
+
+  flatpak remote-add --if-not-exists flathub https://flathub.org/repo/flathub.flatpakrepo
+
+  git clone https://github.com/asdf-vm/asdf.git ~/.asdf --branch v0.6.0
+fi
+
+export KEYID=cdacea52a952f689fda3f401031315d9816c1160
+curl https://keybase.io/qnm/pgp_keys.asc?fingerprint=$KEYID | gpg --import
+
+export GPG_TTY="$(tty)"
+export SSH_AUTH_SOCK=$(gpgconf --list-dirs agent-ssh-socket)
+gpgconf --launch gpg-agent
 
 echo "$( \
-  gpg --list-keys --fingerprint $GPGKEY\
+  gpg --list-keys --fingerprint $KEYID\
   | grep pub -A 1 | tail -1 \
   | tr -d '[:space:]' | awk 'BEGIN { FS = "=" } ; { print $2 }' \
   ):6:" | gpg --import-ownertrust;
 
 # ssh via gpg
-cat << EOF >> ~/.ssh/config
+cat <<EOF > ~/.ssh/config
 Host github.com
     IdentitiesOnly yes
     IdentityFile ~/.ssh/id_rsa_yubikey.pub
 EOF
 
+touch ~/.ssh/id_rsa_yubikey.pub
 ssh-add -L > ~/.ssh/id_rsa_yubikey.pub
-chmod 644 ~/.ssh/id_rsa_yubikey.pub
-
-# convox
-curl -L https://convox.com/cli/linux/convox -o /tmp/convox
-sudo mv /tmp/convox /usr/local/bin/convox
-sudo chmod 755 /usr/local/bin/convox
-
-# docker
-sudo gpasswd -a $USER docker
-newgrp docker
-
-# git usability
-git config --global push.default current
-
-flatpak remote-add --if-not-exists flathub https://flathub.org/repo/flathub.flatpakrepo
-
-git clone https://github.com/asdf-vm/asdf.git ~/.asdf --branch v0.6.0
+chmod 600 ~/.ssh/id_rsa_yubikey.pub
 
 asdf plugin-add golang
 asdf install golang 1.11
+asdf global golang 1.11
 go get golang.org/x/tools/cmd/goimports
 go get github.com/sqs/goreturns
