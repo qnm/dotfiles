@@ -60,3 +60,6 @@ asdf install golang 1.11
 asdf global golang 1.11
 go get golang.org/x/tools/cmd/goimports
 go get github.com/sqs/goreturns
+
+# ensure yadm is using the private github url
+yadm remote set-url origin git@github.com:qnm/dotfiles.git
