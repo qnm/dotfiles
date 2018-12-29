@@ -1,5 +1,4 @@
-. $HOME/.asdf/asdf.sh
-. $HOME/.asdf/completions/asdf.bash
+source /usr/local/opt/asdf/asdf.sh
 
 export CLICOLOR=1
 export LSCOLORS=ExFxBxDxCxegedabagacad
