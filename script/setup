@@ -1,1 +1,2 @@
 brew install yadm
+yadm clone https://github.com/qnm/dotfiles -f
