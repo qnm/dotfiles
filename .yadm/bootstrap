@@ -61,5 +61,9 @@ asdf global golang 1.11
 go get golang.org/x/tools/cmd/goimports
 go get github.com/sqs/goreturns
 
+asdf plugin-add rust
+asdf install rust 1.31.1
+asdf global rust 1.31.1
+
 # ensure yadm is using the private github url
 yadm remote set-url origin git@github.com:qnm/dotfiles.git

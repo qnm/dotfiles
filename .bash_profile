@@ -1,4 +1,5 @@
 source /usr/local/opt/asdf/asdf.sh
+source /Users/qnm/.asdf/installs/rust/1.31.1/env
 
 export CLICOLOR=1
 export LSCOLORS=ExFxBxDxCxegedabagacad
