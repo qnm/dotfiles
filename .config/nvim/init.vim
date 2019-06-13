@@ -7,15 +7,9 @@ call plug#begin('~/.config/nvim/plugged')
 Plug 'kien/ctrlp.vim'
 Plug 'jdkanani/vim-material-theme'
 Plug 'itchyny/lightline.vim'
-Plug 'autozimu/LanguageClient-neovim', {
-    \ 'branch': 'next',
-    \ 'do': 'bash install.sh',
-    \ }
-
-" (Optional) Multi-entry selection UI.
-Plug 'junegunn/fzf'
-
-Plug 'Shougo/deoplete.nvim', { 'do': ':UpdateRemotePlugins' }
+Plug 'neoclide/coc.nvim', {'do': './install.sh nightly'}
+Plug 'neoclide/coc-solargraph', {'do': 'yarn install --frozen-lockfile'}
+Plug 'neoclide/coc-json', {'do': 'yarn install --frozen-lockfile'}
 
 " Add plugins to &runtimepath
 call plug#end()
@@ -23,9 +17,6 @@ call plug#end()
 " python host
 let g:python2_host_prog = '/usr/local/bin/python'
 let g:python3_host_prog = '/usr/local/bin/python3'
-
-" deoplete
-let g:deoplete#enable_at_startup = 1
 
 " Layout settings
 set number " turn on line numbers
@@ -57,15 +48,3 @@ set tabstop=2 " Number of space og a <Tab> character
 set softtabstop=2
 set shiftwidth=2 " Number of spaces use by autoindent
 set expandtab " Pressing <Tab> puts spaces, and < and > for indenting uses psaces
-
-" Language servers
-
-let g:LanguageClient_serverCommands = {
-    \ 'rust': ['~/.cargo/bin/rustup', 'run', 'stable', 'rls'],
-    \ 'javascript': ['/usr/local/bin/javascript-typescript-stdio'],
-    \ 'javascript.jsx': ['tcp://127.0.0.1:2089'],
-    \ 'python': ['/usr/local/bin/pyls'],
-    \ 'ruby': ['~/.asdf/shims/solargraph', 'stdio'],
-    \ }
-
-nnoremap <F5> :call LanguageClient_contextMenu()<CR>
