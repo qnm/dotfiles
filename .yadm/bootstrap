@@ -65,5 +65,22 @@ asdf plugin-add rust
 asdf install rust 1.31.1
 asdf global rust 1.31.1
 
+asdf plugin-add ruby
+asdf install ruby 2.4.5
+
+asdf plugin-add node
+asdf install node 10.15.1
+
+# some ruby for neovim
+gem install solargraph
+gem install neovim
+
+# some python for neovim
+pip3 install neovim --upgrade
+pip3 install neovim --upgrade
+
+# some node for neovim
+npm install -g neovim
+
 # ensure yadm is using the private github url
 yadm remote set-url origin git@github.com:qnm/dotfiles.git
