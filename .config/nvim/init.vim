@@ -6,6 +6,7 @@ call plug#begin('~/.config/nvim/plugged')
 " My Plugins here:
 Plug 'kien/ctrlp.vim'
 Plug 'jdkanani/vim-material-theme'
+Plug 'lifepillar/vim-solarized8'
 Plug 'itchyny/lightline.vim'
 Plug 'neoclide/coc.nvim', {'do': './install.sh nightly'}
 Plug 'neoclide/coc-solargraph', {'do': 'yarn install --frozen-lockfile'}
@@ -28,7 +29,7 @@ vmap < <gv
 " theme
 syntax enable
 set background=dark
-colorscheme material-theme
+colorscheme solarized8
 set termguicolors
 
 " ctrl-p

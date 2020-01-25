@@ -61,15 +61,14 @@ asdf global golang 1.11
 go get golang.org/x/tools/cmd/goimports
 go get github.com/sqs/goreturns
 
-asdf plugin-add rust
-asdf install rust 1.31.1
-asdf global rust 1.31.1
-
 asdf plugin-add ruby
 asdf install ruby 2.4.5
 
 asdf plugin-add node
 asdf install node 10.15.1
+
+asdf plugin-add python
+asdf install python 3.7.5
 
 # some ruby for neovim
 gem install solargraph
@@ -86,19 +85,4 @@ npm install -g neovim
 yadm remote set-url origin git@github.com:qnm/dotfiles.git
 
 # install some extensions for vs code
-# qnm@bruichladdich ~/w/d/social> code --list-extensions
-code --install-extension dbaeumer.vscode-eslint
-code --install-extension formulahendry.docker-explorer
-code --install-extension ms-azuretools.vscode-docker
-code --install-extension ms-python.python
-code --install-extension ms-vscode.Go
-code --install-extension ms-vscode.vscode-typescript-tslint-plugin
-code --install-extension ms-vsliveshare.vsliveshare
-code --install-extension p1c2u.docker-compose
-code --install-extension pixelbyte-studios.pixelbyte-love2d
-code --install-extension rebornix.ruby
-code --install-extension stringham.move-ts
-code --install-extension thomaspink.theme-github
-code --install-extension vscodevim.vim
-code --install-extension wix.glean
-code --install-extension zxh404.vscode-proto3
+cat vscode-extensions.txt | xargs -L 1 code --install-extension

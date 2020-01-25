@@ -3,6 +3,7 @@
 :bulk_threshold: 1000
 :sources:
 - https://rubygems.org/
+- https://cc24dbef52005d3b027c99652c9df70007eba24e7d29401e:@packagecloud.io/digivizer/gems/
 :update_sources: true
 :verbose: true
 gem: "--document=yri"

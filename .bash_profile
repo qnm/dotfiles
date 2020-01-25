@@ -8,3 +8,5 @@ alias vim='nvim'
 
 export GPG_TTY="$(tty)"
 export SSH_AUTH_SOCK=$(gpgconf --list-dirs agent-ssh-socket)
+
+export PATH="$HOME/.cargo/bin:$PATH"
