@@ -70,6 +70,9 @@ asdf install node 10.15.1
 asdf plugin-add python
 asdf install python 3.7.5
 
+# set up asdf in fish
+echo "source "(brew --prefix asdf)"/asdf.fish" >> ~/.config/fish/config.fish
+
 # some ruby for neovim
 gem install solargraph
 gem install neovim
