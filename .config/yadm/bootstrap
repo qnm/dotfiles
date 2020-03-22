@@ -14,21 +14,33 @@ if [ "$system_type" = "Darwin" ]; then
 
   gpg-connect-agent killagent /bye
   gpg-connect-agent /bye
+
+  chsh -s /usr/local/bin/fish
+
+  git config --global credential.helper osxkeychain
 else
-  sudo apt install $(grep -vE "^\s*#" packages  | tr "\n" " ")
+  sudo apt install -y $(grep -vE "^\s*#" packages  | tr "\n" " ")
 
   # convox
-  curl -L https://convox.com/cli/linux/convox -o /tmp/convox
-  sudo mv /tmp/convox /usr/local/bin/convox
-  sudo chmod 755 /usr/local/bin/convox
+  if [ ! -f /usr/local/bin/convox ]; then
+    curl -L https://convox.com/cli/linux/convox -o /tmp/convox
+    sudo mv /tmp/convox /usr/local/bin/convox
+    sudo chmod 755 /usr/local/bin/convox
+  fi
 
-  # docker
-  sudo gpasswd -a $USER docker
-  newgrp docker
+  if [ ! -f ~/.yadm-project/yadm ]; then
+    git clone https://github.com/TheLocehiliosan/yadm.git ~/.yadm-project
+    sudo cp ~/.yadm-project/yadm /usr/local/bin/yadm
+    sudo chmod 755 /usr/local/bin/yadm
+  fi
 
   flatpak remote-add --if-not-exists flathub https://flathub.org/repo/flathub.flatpakrepo
 
-  git clone https://github.com/asdf-vm/asdf.git ~/.asdf --branch v0.6.0
+  git clone https://github.com/asdf-vm/asdf.git ~/.asdf --branch v0.7.7
+
+  git config --global credential.helper /usr/lib/git-core/git-credential-libsecret
+
+  chsh -s /usr/bin/fish
 fi
 
 export KEYID=cdacea52a952f689fda3f401031315d9816c1160
@@ -55,6 +67,8 @@ touch ~/.ssh/id_rsa_yubikey.pub
 ssh-add -L > ~/.ssh/id_rsa_yubikey.pub
 chmod 600 ~/.ssh/id_rsa_yubikey.pub
 
+source ~/.asdf/asdf.sh
+source $HOME/.asdf/completions/asdf.bash
 asdf plugin-add golang
 asdf install golang 1.11
 asdf global golang 1.11
@@ -63,15 +77,17 @@ go get github.com/sqs/goreturns
 
 asdf plugin-add ruby
 asdf install ruby 2.4.5
+asdf global ruby 2.4.5
 
-asdf plugin-add node
-asdf install node 10.15.1
+asdf plugin-add nodejs https://github.com/asdf-vm/asdf-nodejs.git
+source ~/.asdf/plugins/nodejs/bin/import-release-team-keyring
+asdf install nodejs 10.15.1
+asdf global nodejs 10.15.1
 
 asdf plugin-add python
 asdf install python 3.7.5
-
-# set up asdf in fish
-echo "source "(brew --prefix asdf)"/asdf.fish" >> ~/.config/fish/config.fish
+asdf global python 3.7.5
+pip install --upgrade pip
 
 # some ruby for neovim
 gem install solargraph
@@ -83,9 +99,6 @@ pip3 install neovim --upgrade
 
 # some node for neovim
 npm install -g neovim
-
-# ensure yadm is using the private github url
-yadm remote set-url origin git@github.com:qnm/dotfiles.git
 
 # install some extensions for vs code
 cat vscode-extensions.txt | xargs -L 1 code --install-extension

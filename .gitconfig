@@ -5,4 +5,4 @@
 [push]
 	default = current
 [credential]
-	helper = osxkeychain
+	helper = /usr/lib/git-core/git-credential-libsecret
