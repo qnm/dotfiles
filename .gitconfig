@@ -5,4 +5,4 @@
 [push]
 	default = current
 [credential]
-	helper = /usr/lib/git-core/git-credential-libsecret
+	helper = /usr/share/doc/git/contrib/credential/libsecret/git-credential-libsecret
