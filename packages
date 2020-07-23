@@ -1,5 +1,8 @@
+alacritty
+tmux
 neovim
 docker.io
+docker-compose
 snapd
 fish
 automake
