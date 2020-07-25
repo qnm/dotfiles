@@ -100,6 +100,10 @@ asdf install python 3.7.5
 asdf global python 3.7.5
 pip install --upgrade pip
 
+asdf install adr-tools
+asdf install adr-tools 3.0.0
+asdf global adr-tools 3.0.0
+
 # some ruby for neovim
 gem install solargraph
 gem install neovim

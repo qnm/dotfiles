@@ -22,3 +22,5 @@ zlib1g-dev
 libsecret-1-0
 libsecret-1-dev
 libglib2.0-dev
+openjdk-14-jre-headless
+graphviz
