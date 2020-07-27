@@ -81,28 +81,28 @@ chmod 600 ~/.ssh/id_rsa_yubikey.pub
 source ~/.asdf/asdf.sh
 source $HOME/.asdf/completions/asdf.bash
 asdf plugin-add golang
-asdf install golang 1.11
-asdf global golang 1.11
+asdf install golang latest
+asdf global golang $(asdf latest golang)
 go get golang.org/x/tools/cmd/goimports
 go get github.com/sqs/goreturns
 
 asdf plugin-add ruby
-asdf install ruby 2.4.5
-asdf global ruby 2.4.5
+asdf install ruby latest
+asdf global ruby $(asdf latest ruby)
 
-asdf plugin-add nodejs https://github.com/asdf-vm/asdf-nodejs.git
+asdf plugin-add nodejs
 source ~/.asdf/plugins/nodejs/bin/import-release-team-keyring
-asdf install nodejs 10.15.1
-asdf global nodejs 10.15.1
+asdf install nodejs latest
+asdf global nodejs latest
 
 asdf plugin-add python
-asdf install python 3.7.5
-asdf global python 3.7.5
+asdf install python latest
+asdf global python $(asdf latest python)
 pip install --upgrade pip
 
 asdf install adr-tools
-asdf install adr-tools 3.0.0
-asdf global adr-tools 3.0.0
+asdf install adr-tools latest
+asdf global adr-tools $(asdf latest adr-tools)
 
 # some ruby for neovim
 gem install solargraph
