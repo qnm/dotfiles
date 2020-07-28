@@ -117,3 +117,8 @@ npm install -g neovim
 
 # install some extensions for vs code
 cat vscode-extensions.txt | xargs -L 1 code --install-extension
+
+# add aws vault
+asdf plugin-add aws-vault https://github.com/beardix/asdf-aws-vault.git
+asdf latest aws-vault
+asdf global aws-vault $(asdf latest aws-vault)
