@@ -19,8 +19,10 @@ if [ "$system_type" = "Darwin" ]; then
 
   git config --global credential.helper osxkeychain
 else
+  # install ubuntu packages
   sudo apt install -y $(grep -vE "^\s*#" ~/packages  | tr "\n" " ")
 
+  # install flatpacks
   flatpak remote-add --if-not-exists flathub https://flathub.org/repo/flathub.flatpakrepo
   for i in `cat ~/flatpacks`; do flatpak install flathub $i; done;
 
@@ -31,18 +33,23 @@ else
     sudo chmod 755 /usr/local/bin/convox
   fi
 
+  # install asdf
   git clone https://github.com/asdf-vm/asdf.git ~/.asdf
 fi
 
+# ush fish shell
 chsh -s /usr/bin/fish
 
+# grab my key from keybase
 export KEYID=cdacea52a952f689fda3f401031315d9816c1160
 curl https://keybase.io/qnm/pgp_keys.asc?fingerprint=$KEYID | gpg --import
 
+# set up gpg
 export GPG_TTY="$(tty)"
 export SSH_AUTH_SOCK=$(gpgconf --list-dirs agent-ssh-socket)
 gpgconf --launch gpg-agent
 
+# import my key into gpg
 echo "$( \
   gpg --list-keys --fingerprint $KEYID\
   | grep pub -A 1 | tail -1 \
@@ -56,30 +63,37 @@ Host github.com
     IdentityFile ~/.ssh/id_rsa_yubikey.pub
 EOF
 
+# some yubikey bits n pieces
 touch ~/.ssh/id_rsa_yubikey.pub
 ssh-add -L > ~/.ssh/id_rsa_yubikey.pub
 chmod 600 ~/.ssh/id_rsa_yubikey.pub
 
+# load the asdf completions etc.
 source ~/.asdf/asdf.sh
 source $HOME/.asdf/completions/asdf.bash
 
+# add golang
 asdf plugin-add golang
 asdf install golang latest
 asdf global golang $(asdf latest golang)
 
+# add ruby
 asdf plugin-add ruby
 asdf install ruby latest
 asdf global ruby $(asdf latest ruby)
 
+# add nodejs
 asdf plugin-add nodejs
 asdf install nodejs latest
 asdf global nodejs $(asdf latest nodejs)
 
+# add python
 asdf plugin-add python
 asdf install python latest
 asdf global python $(asdf latest python)
 pip install --upgrade pip
 
+# add adr-tools
 asdf plugin-add adr-tools
 asdf install adr-tools latest
 asdf global adr-tools $(asdf latest adr-tools)
@@ -106,4 +120,4 @@ pip3 install neovim --upgrade
 npm install -g neovim
 
 # install some extensions for vs code
-cat vscode-extensions.txt | xargs -L 1 code --install-extension --force
+cat vscode-extensions.txt | xargs -L 1 code --install-extension
