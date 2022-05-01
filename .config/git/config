@@ -4,8 +4,6 @@
 	signingkey = cdacea52a952f689fda3f401031315d9816c1160
 [push]
 	default = current
-[credential]
-	helper = /usr/share/doc/git/contrib/credential/libsecret/git-credential-libsecret
 [diff]
 	tool = vimdiff
 [merge]
