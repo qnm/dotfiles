@@ -72,18 +72,27 @@ asdf install ruby latest
 asdf global ruby $(asdf latest ruby)
 
 asdf plugin-add nodejs
-source ~/.asdf/plugins/nodejs/bin/import-release-team-keyring
 asdf install nodejs latest
-asdf global nodejs latest
+asdf global nodejs $(asdf latest nodejs)
 
 asdf plugin-add python
 asdf install python latest
 asdf global python $(asdf latest python)
 pip install --upgrade pip
 
-asdf install adr-tools
+asdf plugin-add adr-tools
 asdf install adr-tools latest
 asdf global adr-tools $(asdf latest adr-tools)
+
+# add aws vault
+asdf plugin-add aws-vault https://github.com/beardix/asdf-aws-vault.git
+asdf install aws-vault latest
+asdf global aws-vault $(asdf latest aws-vault)
+
+# add terraform
+asdf plugin-add terraform https://github.com/asdf-community/asdf-hashicorp.git
+asdf install terraform latest
+asdf global terraform $(asdf latest terraform)
 
 # some ruby for neovim
 gem install solargraph
@@ -98,13 +107,3 @@ npm install -g neovim
 
 # install some extensions for vs code
 cat vscode-extensions.txt | xargs -L 1 code --install-extension --force
-
-# add aws vault
-asdf plugin-add aws-vault https://github.com/beardix/asdf-aws-vault.git
-asdf install aws-vault latest
-asdf global aws-vault $(asdf latest aws-vault)
-
-# add terraform
-asdf plugin-add terraform https://github.com/asdf-community/asdf-hashicorp.git
-asdf install terraform latest
-asdf global terraform $(asdf latest terraform)
