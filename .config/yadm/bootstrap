@@ -15,12 +15,11 @@ if [ "$system_type" = "Darwin" ]; then
   gpg-connect-agent killagent /bye
   gpg-connect-agent /bye
 
-  chsh -s /usr/local/bin/fish
-
   git config --global credential.helper osxkeychain
 else
   sudo apt install -y $(grep -vE "^\s*#" ~/packages  | tr "\n" " ")
 
+  flatpak remote-add --if-not-exists flathub https://flathub.org/repo/flathub.flatpakrepo
   for i in `cat ~/flatpacks`; do flatpak install flathub $i; done;
 
   # convox
@@ -30,29 +29,10 @@ else
     sudo chmod 755 /usr/local/bin/convox
   fi
 
-  if [ ! -f ~/.yadm-project/yadm ]; then
-    git clone https://github.com/TheLocehiliosan/yadm.git ~/.yadm-project
-    sudo cp ~/.yadm-project/yadm /usr/local/bin/yadm
-    sudo chmod 755 /usr/local/bin/yadm
-  fi
-
-  flatpak remote-add --if-not-exists flathub https://flathub.org/repo/flathub.flatpakrepo
-
   git clone https://github.com/asdf-vm/asdf.git ~/.asdf
-
-  # build libsecret for git
-  cd /usr/share/doc/git/contrib/credential/libsecret
-  sudo make
-  cd
-  git config --global credential.helper /usr/share/doc/git/contrib/credential/libsecret/git-credential-libsecret
-
-  chsh -s /usr/bin/fish
-
-  snap install skaffold
-  snap install kompose
-  snap install minikube
-  snap install terraform
 fi
+
+chsh -s /usr/bin/fish
 
 export KEYID=cdacea52a952f689fda3f401031315d9816c1160
 curl https://keybase.io/qnm/pgp_keys.asc?fingerprint=$KEYID | gpg --import
@@ -80,11 +60,10 @@ chmod 600 ~/.ssh/id_rsa_yubikey.pub
 
 source ~/.asdf/asdf.sh
 source $HOME/.asdf/completions/asdf.bash
+
 asdf plugin-add golang
 asdf install golang latest
 asdf global golang $(asdf latest golang)
-go get golang.org/x/tools/cmd/goimports
-go get github.com/sqs/goreturns
 
 asdf plugin-add ruby
 asdf install ruby latest
@@ -120,5 +99,10 @@ cat vscode-extensions.txt | xargs -L 1 code --install-extension
 
 # add aws vault
 asdf plugin-add aws-vault https://github.com/beardix/asdf-aws-vault.git
-asdf latest aws-vault
+asdf install aws-vault latest
 asdf global aws-vault $(asdf latest aws-vault)
+
+# add terraform
+asdf plugin-add terraform https://github.com/asdf-community/asdf-hashicorp.git
+asdf install terraform latest
+asdf global terraform $(asdf latest terraform)
