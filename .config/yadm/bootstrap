@@ -35,6 +35,9 @@ else
 
   # install asdf
   git clone https://github.com/asdf-vm/asdf.git ~/.asdf
+
+  # reload gnome config
+  dconf load / < "$HOME/.config/dconf/settings.ini"
 fi
 
 # ush fish shell
