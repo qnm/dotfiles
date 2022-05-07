@@ -124,3 +124,6 @@ npm install -g neovim
 
 # install some extensions for vs code
 cat vscode-extensions.txt | xargs -L 1 code --install-extension
+
+# log into github
+gh auth login
