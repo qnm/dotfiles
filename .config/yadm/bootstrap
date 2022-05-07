@@ -71,59 +71,25 @@ touch ~/.ssh/id_rsa_yubikey.pub
 ssh-add -L > ~/.ssh/id_rsa_yubikey.pub
 chmod 600 ~/.ssh/id_rsa_yubikey.pub
 
-# load the asdf completions etc.
-source ~/.asdf/asdf.sh
-source $HOME/.asdf/completions/asdf.bash
-
-# add golang
-asdf plugin-add golang
-asdf install golang latest
-asdf global golang $(asdf latest golang)
-
-# add ruby
-asdf plugin-add ruby
-asdf install ruby latest
-asdf global ruby $(asdf latest ruby)
-
-# add nodejs
-asdf plugin-add nodejs
-asdf install nodejs latest
-asdf global nodejs $(asdf latest nodejs)
-
-# add python
-asdf plugin-add python
-asdf install python latest
-asdf global python $(asdf latest python)
-pip install --upgrade pip
-
-# add adr-tools
-asdf plugin-add adr-tools
-asdf install adr-tools latest
-asdf global adr-tools $(asdf latest adr-tools)
-
-# add aws vault
-asdf plugin-add aws-vault https://github.com/beardix/asdf-aws-vault.git
-asdf install aws-vault latest
-asdf global aws-vault $(asdf latest aws-vault)
-
-# add terraform
-asdf plugin-add terraform https://github.com/asdf-community/asdf-hashicorp.git
-asdf install terraform latest
-asdf global terraform $(asdf latest terraform)
-
-# some ruby for neovim
-gem install solargraph
-gem install neovim
-
-# some python for neovim
-pip3 install neovim --upgrade
-pip3 install neovim --upgrade
-
-# some node for neovim
-npm install -g neovim
-
 # install some extensions for vs code
 cat vscode-extensions.txt | xargs -L 1 code --install-extension
 
 # log into github
-gh auth login
+# gh auth login
+
+# Directory to look for bootstrap executables in
+BOOTSTRAP_D="${BASH_SOURCE[0]}.d"
+
+if [[ ! -d "$BOOTSTRAP_D" ]]; then
+    echo "Error: bootstrap directory '$BOOTSTRAP_D' not found" >&2
+    exit 1
+fi
+
+find -L "$BOOTSTRAP_D" -type f | sort | while IFS= read -r bootstrap; do
+    if [[ -x "$bootstrap" && ! "$bootstrap" =~ "##" && ! "$bootstrap" =~ "~$" ]]; then
+        if ! "$bootstrap"; then
+            echo "Error: bootstrap '$bootstrap' failed" >&2
+            exit 1
+        fi
+    fi
+done

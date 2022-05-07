@@ -1,0 +1,41 @@
+#!/bin/bash
+
+# load the asdf completions etc.
+source ~/.asdf/asdf.sh
+
+# add golang
+asdf plugin-add golang
+asdf install golang latest
+asdf global golang $(asdf latest golang)
+
+# add ruby
+asdf plugin-add ruby
+asdf install ruby latest
+asdf global ruby $(asdf latest ruby)
+
+# add nodejs
+asdf plugin-add nodejs
+asdf install nodejs latest
+asdf global nodejs $(asdf latest nodejs)
+
+# add python
+asdf plugin-add python
+asdf install python latest
+asdf global python $(asdf latest python)
+pip install --upgrade pip
+
+# add adr-tools
+asdf plugin-add adr-tools
+asdf install adr-tools latest
+asdf global adr-tools $(asdf latest adr-tools)
+
+# add aws vault
+asdf plugin-add aws-vault https://github.com/beardix/asdf-aws-vault.git
+asdf install aws-vault latest
+asdf global aws-vault $(asdf latest aws-vault)
+
+# add terraform
+asdf plugin-add terraform https://github.com/asdf-community/asdf-hashicorp.git
+asdf install terraform latest
+asdf global terraform $(asdf latest terraform)
+
