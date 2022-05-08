@@ -24,7 +24,7 @@ else
 
   # install flatpacks
   flatpak remote-add --if-not-exists flathub https://flathub.org/repo/flathub.flatpakrepo
-  for i in `cat ~/flatpacks`; do flatpak install flathub $i; done;
+  for i in `cat ~/flatpacks`; do flatpak install --user -y flathub $i; done;
 
   # convox
   if [ ! -f /usr/local/bin/convox ]; then
@@ -71,11 +71,8 @@ touch ~/.ssh/id_rsa_yubikey.pub
 ssh-add -L > ~/.ssh/id_rsa_yubikey.pub
 chmod 600 ~/.ssh/id_rsa_yubikey.pub
 
-# install some extensions for vs code
-cat vscode-extensions.txt | xargs -L 1 code --install-extension
-
 # log into github
-# gh auth login
+gh auth login
 
 # Directory to look for bootstrap executables in
 BOOTSTRAP_D="${BASH_SOURCE[0]}.d"
