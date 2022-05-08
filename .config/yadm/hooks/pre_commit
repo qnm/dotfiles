@@ -1,0 +1,14 @@
+#!/bin/bash
+
+system_type=$(uname -s)
+
+if [ "$system_type" = "Darwin" ]; then
+  # nothing for macos yet
+  echo "Pre-commit skipping MacOS"
+else
+  # running gnome
+  dconfFile="$HOME/.config/dconf/settings.ini"
+
+  dconf dump / > "$dconfFile"
+  yadm add "$dconfFile"
+fi
