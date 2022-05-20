@@ -25,3 +25,5 @@ yadm
 gnome-keyring
 gnome-tweaks
 code
+gnupg2
+scdaemon
