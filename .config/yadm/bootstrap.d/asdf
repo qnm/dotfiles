@@ -39,3 +39,12 @@ asdf plugin-add terraform https://github.com/asdf-community/asdf-hashicorp.git
 asdf install terraform latest
 asdf global terraform $(asdf latest terraform)
 
+# add terraformer
+asdf plugin add terraformer https://github.com/grimoh/asdf-terraformer.git
+asdf install terraformer latest
+asdf global terraformer $(asdf latest terraformer)
+
+# aws copilot
+asdf plugin add aws-copilot
+asdf install aws-copilot latest
+asdf global aws-copilot latest
