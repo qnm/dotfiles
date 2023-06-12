@@ -11,7 +11,11 @@ org.freedesktop.Platform.openh264
 org.freedesktop.Sdk
 org.gnome.Fractal
 org.gnome.Platform
-org.gnome.Platform
-org.gnome.Platform
 org.gtk.Gtk3theme.Pop-dark
 us.zoom.Zoom
+io.neovim.nvim
+com.onepassword.OnePassword
+org.libreoffice.LibreOffice
+io.dbeaver.DBeaverCommunity
+io.podman_desktop.PodmanDesktop
+
