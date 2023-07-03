@@ -16,4 +16,4 @@
 	process = git-lfs filter-process
 	required = true
 [credential "https://github.com"]
-	helper = /opt/homebrew/bin/gh auth git-credential
+	helper = /home/qnm/.asdf/shims/gh auth git-credential
