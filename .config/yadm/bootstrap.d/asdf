@@ -53,3 +53,8 @@ asdf global aws-copilot latest
 asdf plugin-add github-cli https://github.com/bartlomiejdanek/asdf-github-cli.git
 asdf install github-cli latest
 asdf global github-cli latest
+
+# hasura cli
+asdf plugin add hasura-cli
+asdf install hasura-cli latest
+asdf global hasura-cli latest
