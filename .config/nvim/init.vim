@@ -23,6 +23,7 @@ Plug 'neoclide/coc-tsserver'
 Plug 'neoclide/coc-json'
 Plug 'jremmen/vim-ripgrep'
 Plug 'catppuccin/nvim', { 'as': 'catppuccin' }
+Plug 'Mofiqul/vscode.nvim', { 'branch': 'main' }
 
 " Add plugins to &runtimepath
 call plug#end()
@@ -47,8 +48,8 @@ set number " turn on line numbers
 " theme
 syntax enable
 set background=dark
-" colorscheme catppuccin-mocha
-colorscheme solarized8
+colorscheme catppuccin-mocha
+" colorscheme solarized8
 set termguicolors
 
 " ctrl-p

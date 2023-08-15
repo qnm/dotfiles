@@ -37,6 +37,7 @@ plugins=(
   rake
   rbenv
   ruby
+  zsh-autosuggestions
 )
 
 source $ZSH/oh-my-zsh.sh
@@ -44,3 +45,8 @@ source $ZSH/oh-my-zsh.sh
 # User configuration
 
 export EDITOR='nvim'
+
+# add pipenv
+eval "$(_PIPENV_COMPLETE=zsh_source pipenv)"
+
+source ~/.config/zsh/catppuccin_mocha-zsh-syntax-highlighting.zsh
