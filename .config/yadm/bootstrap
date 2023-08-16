@@ -90,3 +90,9 @@ find -L "$BOOTSTRAP_D" -type f | sort | while IFS= read -r bootstrap; do
         fi
     fi
 done
+
+# install nix
+curl --proto '=https' --tlsv1.2 -sSf -L https://install.determinate.systems/nix | sh -s -- install
+
+# bootstrap nix
+nix run nixpkgs#home-manager -- switch --flake ~/.config/home-manager/
