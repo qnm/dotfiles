@@ -70,6 +70,27 @@
   # Let Home Manager install and manage itself.
   programs.home-manager.enable = true;
 
+
+  # Enable zsh
+  programs.zsh = {
+    enable = true;
+    enableAutosuggestions = true;
+    syntaxHighlighting.enable = true;
+    oh-my-zsh = {
+      enable = true;
+      plugins = [
+        "git"
+        "bundler"
+        "dotenv"
+        "asdf"
+        "rake"
+        "rbenv"
+        "ruby"
+      ];
+      theme = "robbyrussell";
+    };
+  };
+
   programs.neovim = {
     enable = true;
     viAlias = true;
