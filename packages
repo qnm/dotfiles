@@ -1,6 +1,4 @@
-tmux
 docker-compose
-fish
 automake
 autoconf
 libreadline-dev

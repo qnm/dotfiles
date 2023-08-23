@@ -40,7 +40,17 @@
     ripgrep
     curl
     unzip
-    awscli
+    tmux
+    gnomeExtensions.pop-shell
+    terraform
+    terraformer
+    awscli2
+    ssm-session-manager-plugin
+    copilot-cli
+    asdf-vm
+    adrgen
+    hasura-cli
+    google-cloud-sdk
   ];
 
   # Home Manager is pretty good at managing dotfiles. The primary way to manage
