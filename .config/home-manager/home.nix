@@ -1,10 +1,21 @@
-{ config, pkgs, ... }:
-
+{
+  username,
+  config,
+  pkgs,
+  nixpkgs,
+  ...
+}:
+let
+  homeDir = if pkgs.stdenv.isDarwin then "Users" else "home";
+  user = "qnm";
+in
 {
   # Home Manager needs a bit of information about you and the paths it should
   # manage.
-  home.username = "qnm";
-  home.homeDirectory = "/home/qnm";
+  home.username = user;
+  home.homeDirectory = "/${homeDir}/${user}";
+
+  # system.keyboard.remapCapsLockToControl = true;
 
   # This value determines the Home Manager release that your configuration is
   # compatible with. This helps avoid breakage when a new Home Manager release
@@ -18,40 +29,36 @@
   # The home.packages option allows you to install Nix packages into your
   # environment.
   home.packages = with pkgs; [
-    # # Adds the 'hello' command to your environment. It prints a friendly
-    # # "Hello, world!" when run.
-    # pkgs.hello
-
-    # # It is sometimes useful to fine-tune packages, for example, by applying
-    # # overrides. You can do that directly here, just don't forget the
-    # # parentheses. Maybe you want to install Nerd Fonts with a limited number of
-    # # fonts?
-    # (pkgs.nerdfonts.override { fonts = [ "FantasqueSansMono" ]; })
-
-    # # You can also create simple shell scripts directly inside your
-    # # configuration. For example, this adds a command 'my-hello' to your
-    # # environment:
-    # (pkgs.writeShellScriptBin "my-hello" ''
-    #   echo "Hello, ${config.home.username}!"
-    # '')
-
+    # dotenv
+    # docker
+    # docker-compose
+    helix
+    shadowenv
     neofetch
     gh
     ripgrep
     curl
     unzip
     tmux
-    gnomeExtensions.pop-shell
     terraform
     terraformer
     awscli2
     ssm-session-manager-plugin
-    copilot-cli
     asdf-vm
     adrgen
     hasura-cli
     google-cloud-sdk
-  ];
+    copilot-cli
+    yadm
+    jq
+    wget
+  ] ++ (lib.optionals pkgs.stdenv.isDarwin [
+      # macos only
+      iterm2
+  ]) ++ (lib.optionals pkgs.stdenv.isLinux [
+      # linux only
+      gnomeExtensions.pop-shell
+  ]);
 
   # Home Manager is pretty good at managing dotfiles. The primary way to manage
   # plain files is through 'home.file'.
@@ -82,15 +89,12 @@
     # EDITOR = "emacs";
   };
 
-  # Let Home Manager install and manage itself.
-  programs.home-manager.enable = true;
-
   # Enable zsh
   programs.zsh = {
     enable = true;
-    
+    # syntaxHighlighting.enable = true;
+    enableSyntaxHighlighting = true;
     enableAutosuggestions = true;
-    syntaxHighlighting.enable = true;
     shellAliases = {
       ll = "ls -l";
       nix-update = "nix run nixpkgs#home-manager -- switch --flake ~/.config/home-manager/ -b backup";
@@ -195,4 +199,7 @@
     extraPackages = with pkgs; [ fzf ];
     extraPython3Packages = ps: with ps; [ /* python-language-server */ ];
   };
+
+  # Let Home Manager install and manage itself.
+  programs.home-manager.enable = true;
 }
