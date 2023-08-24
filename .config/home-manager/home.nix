@@ -10,6 +10,15 @@ let
   user = "qnm";
 in
 {
+  dconf.settings = {
+    "org/gnome/desktop/interface" = {
+      color-scheme = "prefer-dark";
+      font-antialiasing = "rgba";
+    };
+
+    "org/gnome/desktop/input-sources" = { xkb-options = [ "ctrl:nocaps" ]; };
+  };
+
   # Home Manager needs a bit of information about you and the paths it should
   # manage.
   home.username = user;
@@ -57,6 +66,10 @@ in
       iterm2
   ]) ++ (lib.optionals pkgs.stdenv.isLinux [
       # linux only
+      firefox
+      gnome.nautilus
+      gnome.gnome-shell-extensions
+      gnomeExtensions.appindicator
       gnomeExtensions.pop-shell
   ]);
 
