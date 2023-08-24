@@ -40,7 +40,7 @@ in
   home.packages = with pkgs; [
     # dotenv
     # docker
-    # docker-compose
+    docker-compose
     helix
     shadowenv
     neofetch
@@ -61,16 +61,27 @@ in
     yadm
     jq
     wget
+    gnupg
+    alacritty
+    yadm
+    graphviz
   ] ++ (lib.optionals pkgs.stdenv.isDarwin [
       # macos only
       iterm2
   ]) ++ (lib.optionals pkgs.stdenv.isLinux [
       # linux only
       firefox
+      flatpak
       gnome.nautilus
       gnome.gnome-shell-extensions
+      gnome.gnome-tweaks
+      gnome.gnome-keyring
+      gnome.gnome-screenshot
       gnomeExtensions.appindicator
       gnomeExtensions.pop-shell
+      rocminfo
+      tidal-hifi
+      shortwave
   ]);
 
   # Home Manager is pretty good at managing dotfiles. The primary way to manage

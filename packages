@@ -1,4 +1,3 @@
-docker-compose
 automake
 autoconf
 libreadline-dev
@@ -9,18 +8,8 @@ libxslt-dev
 libffi-dev
 libtool
 unixodbc-dev
-flatpak
 zlib1g-dev
 libsecret-1-0
 libsecret-1-dev
 libglib2.0-dev
-graphviz
-yadm
-gnome-keyring
-gnome-tweaks
-code
-gnupg2
 scdaemon
-alacritty
-gnome-screenshot
-rocminfo
