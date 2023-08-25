@@ -41,7 +41,6 @@ in
     # dotenv
     # docker
     docker-compose
-    helix
     shadowenv
     neofetch
     gh
@@ -72,11 +71,11 @@ in
       # linux only
       firefox
       flatpak
-      gnome.nautilus
-      gnome.gnome-shell-extensions
       gnome.gnome-tweaks
       gnome.gnome-keyring
       gnome.gnome-screenshot
+      gnome.nautilus
+      gnome.gnome-shell-extensions
       gnomeExtensions.appindicator
       gnomeExtensions.pop-shell
       rocminfo
@@ -111,6 +110,83 @@ in
   # if you don't want to manage your shell through Home Manager.
   home.sessionVariables = {
     # EDITOR = "emacs";
+  };
+
+  programs.helix = {
+    enable = true;
+    settings = {
+      theme = "catppuccin_mocha";
+      editor = {
+        line-number = "relative";
+        lsp.display-messages = true;
+        cursorline = true;
+        color-modes = true;
+        cursor-shape = {
+          insert = "bar";
+          normal = "block";
+          select = "underline";
+        };
+        indent-guides = {
+          render = true;
+        };
+      };
+    };
+    languages = {
+      language = [
+        {
+          name = "ruby";
+          config = {
+            solargraph = {
+              diagnostics = true;
+              formatting = true;
+            };
+          };
+        }
+        {
+          name = "tsx";
+          formatter= {
+            command = "cd $FILE_LOCATION && prettier";
+            args = [
+              "--config-precedence"
+              "prefer-file"
+              "--stdin-filepath"
+              "file.tsx"
+            ];
+          };
+        }
+        {
+          name = "javascript";
+          formatter = {
+            command = "prettier";
+            args = [
+              "--parser"
+              "typescript"
+            ];
+          };
+          auto-format = true;
+        }
+      ];
+    };
+    themes = {
+      catpuccin_mocha_test = let
+        rosewater = "#f5e0dc";
+        flamingo = "#f2cdcd";
+        pink = "#f5c2e7";
+        mauve = "#cba6f7";
+        red = "#f38ba8";
+        maroon = "#eba0ac";
+        peach = "#fab387";
+        yellow = "#f9e2af";
+        green = "#a6e3a1";
+        teal = "#94e2d5";
+        sky = "#89dceb";
+        sapphire = "#74c7ec";
+        blue = "#89b4fa";
+        lavender = "#b4befe";
+      in {
+        "type" = yellow;
+      };
+    };
   };
 
   # Enable zsh
