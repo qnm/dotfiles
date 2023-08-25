@@ -89,6 +89,9 @@ in
 
     extraConfig = {
       user.signingkey = "cdacea52a952f689fda3f401031315d9816c1160";
+      push = {
+        autoSetupRemote = true;
+      };
     };
   };
 
