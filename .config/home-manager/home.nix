@@ -43,7 +43,6 @@ in
     docker-compose
     shadowenv
     neofetch
-    gh
     ripgrep
     curl
     unzip
@@ -82,6 +81,20 @@ in
       tidal-hifi
       shortwave
   ]);
+
+  programs.git = {
+    enable = true;
+    userName = "Robin Duncan Sharp";
+    userEmail = "rob@sharp.id.au";
+
+    extraConfig = {
+      user.signingkey = "cdacea52a952f689fda3f401031315d9816c1160";
+    };
+  };
+
+  programs.gh = {
+    enable = true;
+  };
 
   # Home Manager is pretty good at managing dotfiles. The primary way to manage
   # plain files is through 'home.file'.
