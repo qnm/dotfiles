@@ -24,55 +24,21 @@ else
 
   # install flatpacks
   flatpak remote-add --if-not-exists flathub https://flathub.org/repo/flathub.flatpakrepo
+  flatpak install https://downloads.1password.com/linux/flatpak/1Password.flatpakref
   for i in `cat ~/flatpacks`; do flatpak install --user -y flathub $i; done;
 
-  # convox
-  if [ ! -f /usr/local/bin/convox ]; then
-    curl -L https://convox.com/cli/linux/convox -o /tmp/convox
-    sudo mv /tmp/convox /usr/local/bin/convox
-    sudo chmod 755 /usr/local/bin/convox
-  fi
-
   # install asdf
-  git clone https://github.com/asdf-vm/asdf.git ~/.asdf
+  if [ ! -d "$HOME/.asdf" ]; then
+    git clone https://github.com/asdf-vm/asdf.git ~/.asdf
+  fi
 
   # reload gnome config
   dconf load / < "$HOME/.config/dconf/settings.ini"
 fi
 
-# ush fish shell
-chsh -s /usr/bin/fish
-
-# grab my key from keybase
-export KEYID=cdacea52a952f689fda3f401031315d9816c1160
-curl https://keybase.io/qnm/pgp_keys.asc?fingerprint=$KEYID | gpg --import
-
-# set up gpg
-export GPG_TTY="$(tty)"
-export SSH_AUTH_SOCK=$(gpgconf --list-dirs agent-ssh-socket)
-gpgconf --launch gpg-agent
-
-# import my key into gpg
-echo "$( \
-  gpg --list-keys --fingerprint $KEYID\
-  | grep pub -A 1 | tail -1 \
-  | tr -d '[:space:]' | awk 'BEGIN { FS = "=" } ; { print $2 }' \
-  ):6:" | gpg --import-ownertrust;
-
-# ssh via gpg
-cat <<EOF > ~/.ssh/config
-Host github.com
-    IdentitiesOnly yes
-    IdentityFile ~/.ssh/id_rsa_yubikey.pub
-EOF
-
-# some yubikey bits n pieces
-touch ~/.ssh/id_rsa_yubikey.pub
-ssh-add -L > ~/.ssh/id_rsa_yubikey.pub
-chmod 600 ~/.ssh/id_rsa_yubikey.pub
-
-# log into github
-gh auth login
+# use zsh shell
+echo "Changing shell"
+chsh -s /usr/bin/zsh
 
 # Directory to look for bootstrap executables in
 BOOTSTRAP_D="${BASH_SOURCE[0]}.d"
@@ -94,5 +60,12 @@ done
 # install nix
 curl --proto '=https' --tlsv1.2 -sSf -L https://install.determinate.systems/nix | sh -s -- install
 
+# enter the nix environment
+. /nix/var/nix/profiles/default/etc/profile.d/nix-daemon.sh
+
 # bootstrap nix
 nix run nixpkgs#home-manager -- switch --flake ~/.config/home-manager/
+
+# log into github
+gh auth login
+

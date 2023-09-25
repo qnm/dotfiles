@@ -25,5 +25,6 @@
     in {
       homeConfigurations."qnm@macbook" = mkHomeConfig "aarch64-darwin";
       homeConfigurations."qnm@desktop" = mkHomeConfig "x86_64-linux";
+      homeConfigurations."qnm@pop-os" = mkHomeConfig "x86_64-linux";
     };
 }

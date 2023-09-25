@@ -10,6 +10,8 @@ let
   user = "qnm";
 in
 {
+  fonts.fontconfig.enable = true;
+
   dconf.settings = {
     "org/gnome/desktop/interface" = {
       color-scheme = "prefer-dark";
@@ -40,6 +42,7 @@ in
   home.packages = with pkgs; [
     # dotenv
     # docker
+    (nerdfonts.override { fonts = [ "FiraCode" "DroidSansMono" ]; })
     docker-compose
     shadowenv
     neofetch
@@ -78,6 +81,7 @@ in
       gnomeExtensions.appindicator
       gnomeExtensions.pop-shell
       rocminfo
+      hipcc
       tidal-hifi
       shortwave
   ]);
@@ -209,7 +213,6 @@ in
   programs.zsh = {
     enable = true;
     # syntaxHighlighting.enable = true;
-    enableSyntaxHighlighting = true;
     enableAutosuggestions = true;
     shellAliases = {
       ll = "ls -l";
