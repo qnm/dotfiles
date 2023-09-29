@@ -24,6 +24,7 @@
         modules = [
           # flatpaks.homeManagerModules.default
           ./home.nix
+          ./dconf.nix
         ];
       };
     in {

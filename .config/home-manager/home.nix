@@ -67,6 +67,7 @@ in
     alacritty
     yadm
     graphviz
+    dconf2nix
   ] ++ (lib.optionals pkgs.stdenv.isDarwin [
       # macos only
       iterm2

@@ -7,8 +7,9 @@ if [ "$system_type" = "Darwin" ]; then
   echo "Pre-commit skipping MacOS"
 else
   # running gnome
-  dconfFile="$HOME/.config/dconf/settings.ini"
+  # dconfFile="$HOME/.config/dconf/settings.ini"
 
-  dconf dump / > "$dconfFile"
-  yadm add "$dconfFile"
+  # dconf dump / > "$dconfFile"
+  # yadm add "$dconfFile"
+  echo "Pre-commit skipping not MacOS"
 fi

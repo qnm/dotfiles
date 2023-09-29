@@ -33,7 +33,7 @@ else
   fi
 
   # reload gnome config
-  dconf load / < "$HOME/.config/dconf/settings.ini"
+  # dconf load / < "$HOME/.config/dconf/settings.ini"
 fi
 
 # use zsh shell
