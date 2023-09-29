@@ -9,9 +9,10 @@
       inputs.nixpkgs.follows = "nixpkgs";
     };
     nix-vscode-extensions.url = "github:nix-community/nix-vscode-extensions";
+    flatpaks.url = "github:GermanBread/declarative-flatpak/stable";
   };
 
-  outputs = { nixpkgs, home-manager, ... }:
+  outputs = { nixpkgs, home-manager, flatpaks, ... }:
     let
       mkHomeConfig = system: home-manager.lib.homeManagerConfiguration {
         pkgs = import nixpkgs {
@@ -20,7 +21,10 @@
 
         # Specify your home configuration modules here, for example,
         # the path to your home.nix.
-        modules = [ ./home.nix ];
+        modules = [
+          # flatpaks.homeManagerModules.default
+          ./home.nix
+        ];
       };
     in {
       homeConfigurations."qnm@macbook" = mkHomeConfig "aarch64-darwin";
